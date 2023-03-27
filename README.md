@@ -44,11 +44,13 @@ az ad sp create-for-rbac --role="Contributor" --name="terraformmulti" --scopes="
 Creating a service principal return a json response with client id (appId) and client secret (password). Copy the response, this will be the last time password is displayed.
 
 {
+
   "appId": "00000000-0000-0000-0000-000000000000",
   "displayName": "terraformmulti",
   "name": "http://terraformmulti",
   "password": "00000000-0000-0000-0000-000000000000",
   "tenant": "00000000-0000-0000-0000-000000000000"
+
 }
 
 I created the resource group with Azure CLI. Resource group could be created with Terraform as well. In some cases the service principal you are using has limited contributor privileges and creating a new resource group is restricted.
@@ -58,6 +60,7 @@ az group create --name "multirg" --location "westeurope"
 Initialize AWS
 
 For the AWS setup I was a bit lazier. I had a user created earlier and just decided to use that. Terraform supports multiple authentication methods and I used the simplest one with aws_access_key and aws_secret_key. I will describe the usage a bit later. The user belongs to the Administrators group so it has all the rights imaginable.
+
 Terraform part 1
 
 Terraform is an open-source infrastructure as code software tool created by HashiCorp. It enables users to define and provision a datacenter infrastructure using a high-level configuration language known as Hashicorp Configuration Language, or optionally JSON. — Wikipedia
@@ -70,6 +73,7 @@ For configuration I’m using VS Code with Terraform extension. I have 3 files, 
 Variables
 
 To persist variable values, I create file called terraform.tfvars. Terraform uses this file to load the populate variables used in the actual terraform configuration files. Variables can be populated from environment variables as well, check that and other possibilities from Terraform documentation which is quite extensive…
+{
 
 aws_access_key = "[MYACCESSKEY]"
 aws_secret_key = "[MYSECRETKEY]"
@@ -77,6 +81,7 @@ azure_client_id= "00000000-0000-0000-0000-000000000000"
 azure_client_secret="00000000-0000-0000-0000-000000000000"
 tenant_id="00000000-0000-0000-0000-000000000000"
 
+}
 Initialize the variables and AWS Provider
 
 To intialize the AWS provider I’m using the persisted variable from tfvars file. Now this is in the Hashicorp Configuration Language (HCL), it’s quite readable, right?
