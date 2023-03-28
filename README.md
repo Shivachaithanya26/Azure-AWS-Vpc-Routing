@@ -160,6 +160,7 @@ Resource actions are indicated with the following symbols:
 Terraform will perform the following actions:
 
 + aws_subnet.main
+
       id:                               <computed>
       arn:                              <computed>
       assign_ipv6_address_on_creation:  "false"
@@ -173,7 +174,9 @@ Terraform will perform the following actions:
       tags.%:                           "1"
       tags.Name:                        "main"
       vpc_id:                           "${aws_vpc.vpc2.id}"
+ 
   + aws_vpc.vpc2
+  
       id:                               <computed>
       arn:                              <computed>
       assign_generated_ipv6_cidr_block: "false"
@@ -193,6 +196,7 @@ Terraform will perform the following actions:
       owner_id:                         <computed>
       tags.%:                           "1"
       tags.Name:                        "New VPC"
+  
 Plan: 2 to add, 0 to change, 0 to destroy.
 ------------------------------------------------------------------------
 
@@ -307,7 +311,9 @@ resource "aws_vpn_gateway" "vpn_gw" {
 
 resource "aws_vpn_connection" "main" {
   vpn_gateway_id      = "${aws_vpn_gateway.vpn_gw.id}"
-  customer_gateway_id = "${aws_customer_gateway.main.id}"type                = "ipsec.1"
+  customer_gateway_id = "${aws_customer_gateway.main.id
+  }
+  "type                = "ipsec.1"
   static_routes_only  = true
 }
 
