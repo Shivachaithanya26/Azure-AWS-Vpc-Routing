@@ -46,9 +46,13 @@ Creating a service principal return a json response with client id (appId) and c
 {
 
   "appId": "00000000-0000-0000-0000-000000000000",
+  
   "displayName": "terraformmulti",
+  
   "name": "http://terraformmulti",
+  
   "password": "00000000-0000-0000-0000-000000000000",
+  
   "tenant": "00000000-0000-0000-0000-000000000000"
 
 }
