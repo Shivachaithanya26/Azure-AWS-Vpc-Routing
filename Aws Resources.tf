@@ -76,3 +76,5 @@ resource "aws_vpn_connection" "main_2" {
     Name = "${var.aws_location_prefix}-S2SVPN"
   })
 }
+
+type = "ipsec.1"
